@@ -1,5 +1,5 @@
 set.hectic.deploy_to            = '/var/www/apps/hectic'
-set.hectic.revision             = '99a4f76f791b3277c5c1ec1df2a54cb135803ddd'
+set.hectic.revision             = '672b694c36425273d99b86565069fa0d017fa4ff'
 set.hectic.server_password_file = "#{hectic.deploy_to}/shared/passwd"
 
 set_unless.hectic.repository      = 'git://github.com/matthewtodd/hectic.git'
