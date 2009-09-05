@@ -2,7 +2,7 @@ raise('hectic["server_password"] is required!') unless hectic.server_password
 raise('hectic["db"]["password"] is required!')  unless hectic.db.password
 
 set.hectic.deploy_to            = '/var/www/apps/hectic'
-set.hectic.revision             = 'e5c0363f79800e6a0f41c1ec0ce1bfa981a3a614'
+set.hectic.revision             = '99a4f76f791b3277c5c1ec1df2a54cb135803ddd'
 set.hectic.server_password_file = "#{hectic.deploy_to}/shared/passwd"
 
 set_unless.hectic.repository      = 'git://github.com/matthewtodd/hectic.git'
