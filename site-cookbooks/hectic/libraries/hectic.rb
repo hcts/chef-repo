@@ -47,7 +47,7 @@ class Hectic
       # permission to access it. For now, the best we can do is return
       # nothing. But maybe it would be better to restructure those other
       # recipes so that they play nicer.
-      Chef::Log.error(error)
+      Chef::Log.warn(error.message)
     ensure
       mysql.close if mysql
     end
