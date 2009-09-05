@@ -1,0 +1,50 @@
+{
+  "recipes": [
+    "openssh",
+    "packages",
+    "ruby",
+    "apache2",
+    "passenger_apache2::mod_rails",
+    "mysql::server",
+    "rails",
+    "git",
+    "extensions",
+    "rsnapshot",
+    "hectic",
+    "postfix",
+    "fetchmail",
+    "dovecot",
+    "pppd",
+    "mgetty",
+    "samba",
+    "vnc"
+  ],
+
+  "apache":    { "listen_ports": [80] },
+
+  "passenger": { "version": "2.2.4" },
+
+  "mysql":     { "bind_address":         "127.0.0.1",
+                 "server_root_password": "---" },
+
+  "rails":     { "version": "2.3.4" },
+
+  "hectic":    { "server_password":  "---",
+                 "db": { "password": "---" } },
+
+  "postfix":   { "default_relayhost":          "---",
+                 "default_relayhost_username": "---",
+                 "default_relayhost_password": "---",
+                 "root_mail_to":               "---" },
+
+  "fetchmail": { "interval": 10800 },
+
+  "modems":    [{ "device": "ttyS0",
+                  "speed":  57600,
+                  "remote_ip_address": "---" },
+                { "device": "ttyS1",
+                  "speed":  57600,
+                  "remote_ip_address": "---" }],
+
+  "samba":     { "password": "---" }
+}
