@@ -17,7 +17,8 @@
     "pppd",
     "mgetty",
     "samba",
-    "vnc"
+    "vnc",
+    "squid"
   ],
 
   "apache":    { "listen_ports": [80] },
