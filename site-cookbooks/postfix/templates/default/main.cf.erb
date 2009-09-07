@@ -16,7 +16,7 @@ smtp_sasl_password_maps = mysql:/etc/postfix/smtp_passwords.cf<%= ', hash:/etc/p
 smtp_sasl_security_options = noanonymous
 smtp_sender_dependent_authentication = yes
 smtp_tls_CApath = /etc/ssl/certs
-smtp_tls_security_level = encrypt
+smtp_tls_security_level = may
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 
 smtpd_banner = $myhostname ESMTP $mail_name
