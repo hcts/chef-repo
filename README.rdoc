@@ -1,0 +1,73 @@
+= HCTS Dialup Server
+
+This project's a chef repository for a dialup satellite email server I've put together for a local organization.
+
+The rest of this README is a handover document that you probably won't find useful or interesting.
+
+== Logfiles
+
+Most all of the interesting information lands in /var/log/syslog.
+
+It's nice to use `grep` to find just the lines you're interested in, and then to pipe those lines into `less` to that you can move around freely:
+
+ # fetching mail from Munich:
+ grep fetchmail /var/log/syslog | less
+
+ # dialup authentication:
+ grep pppd /var/log/syslog | less
+
+ # user POP3 sessions:
+ grep dovecot /var/log/syslog | less
+
+ # incoming and outgoing email:
+ grep postfix /var/log/syslog | less
+
+When using `less`, here are some helpful shortcuts:
+* g - go to the first line
+* G - go to the last line
+* k - go up one line
+* j - go down one line
+* /string - search for "string" in the file
+* n - go to the next match
+* N - go to the previous match
+* q - quit
+
+Note that logrotate runs every morning at 6:25, so yesterday's logs will be in /var/log/syslog.0. (See /etc/logrotate.conf and /etc/logrotate.d/*.)
+
+Lower-level dialin logs for each modem are kept in /var/log/mgetty.
+
+== Mail
+
+Customer mailboxes are kept in /var/mail/virtual/elct.org/*.
+
+I have not installed a program for managing individual messages, but you may use `less` to scan a customer's mailbox for errors:
+
+  sudo less /var/mail/virtual/elct.org/henry
+
+(Note that we use `sudo`, as the "administrator" user doesn't have read access to customer mailboxes.)
+
+And in extreme circumstances you may clear out a user's entire mailbox simply by removing the file. This is obviously dangerous, so I won't show the command here -- if you don't know it, it's probably better that I don't try to teach you here!
+
+== Chef
+
+All the important system configuration files, including /etc/fetchmailrc and /etc/ppp/pap-secrets, are automatically generated when chef runs. Chef is currently set in /etc/cron.d/chef to run every hour.
+
+ANY CHANGES YOU MAKE TO THESE FILES WILL BE ERASED THE NEXT TIME CHEF RUNS! The proper way to change them is to add, edit, and delete customers via the web interface at http://192.168.0.1/. Chef then reads this database to generate the appropriate configuration files.
+
+So, if you add a new customer, it can take up to an hour (for the next chef run) until that customer can dial in and check mail.
+
+== Backups
+
+Every few hours, rsnapshot runs to take a backup of the important data on the system. See /etc/cron.d/rsnapshot and /etc/rsnapshot.conf.
+
+Backups are placed under /var/backups/rsnapshot.
+
+I am not yet sure if we will be able to have rsnapshot backup directly to a USB memory stick, as it uses filesystem hardlinks (unsupported by VFAT) to save enormous amounts of disk space. Perhaps we can reformat a dedicated USB stick to have the proper filesystem for rsnapshot to function as intended.
+
+== Samba
+
+There is one share, named "samba" and accessed with username "samba". The contents of share are included in the rsnapshot backups.
+
+== Squid HTTP Proxy
+
+For the radio staff, there is an HTTP proxy server running at 192.168.0.1:3128.
