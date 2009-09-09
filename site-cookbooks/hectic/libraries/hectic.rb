@@ -5,7 +5,7 @@ class Hectic
   end
 
   def self.base_mailbox_paths(node)
-    new(node).accounts.map { |account| account['mailbox_path'] }.map do |mailbox_path|
+    accounts(node).map { |account| account['mailbox_path'] }.map do |mailbox_path|
       if mailbox_path.end_with?('/')
         mailbox_path
       else
