@@ -3,5 +3,5 @@
 # DO NOT EDIT - Your changes will be overridden.
 #
 <% @accounts.each do |account| %>
-poll <%= account['pop_server'] %> protocol pop3 uidl username "<%= account['email'] %>" password "<%= account['password'] %>" is "<%= account['local_email'] %>" ssl nokeep limit <%= account['limit'].to_i %> limitflush
+poll <%= account['pop_server'] %> protocol pop3 uidl username "<%= account['email'] %>" password "<%= account['password'] %>" is "<%= account['local_email'] %>" ssl nokeep <%= "limit #{account['limit']} limitflush" unless account['limit'].to_i.zero? %>
 <% end %>
