@@ -38,7 +38,8 @@
                  "default_relayhost_password": "---",
                  "root_mail_to":               "---" },
 
-  "fetchmail": { "interval": 10800 },
+  "fetchmail": { "interval": 7200,
+                 "timeout":  1800 },
 
   "modems":    [{ "device": "ttyS0",
                   "speed":  57600,
