@@ -1,7 +1,13 @@
 package 'fetchmail'
 
 service 'fetchmail' do
-  action :enable
+  action :disable
+end
+
+directory '/var/run/fetchmail' do
+  owner 'fetchmail'
+  group 'nogroup'
+  mode 0700
 end
 
 template '/etc/default/fetchmail' do
@@ -19,4 +25,12 @@ template '/etc/fetchmailrc' do
   group 'nogroup'
   mode 0600
   notifies :restart, resources(:service => 'fetchmail')
+end
+
+template '/etc/cron.d/fetchmail' do
+  backup false
+  source 'crontab.erb'
+  owner 'root'
+  group 'root'
+  mode 0644
 end
