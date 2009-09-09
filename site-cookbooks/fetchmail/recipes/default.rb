@@ -30,6 +30,7 @@ end
 template '/etc/cron.d/fetchmail' do
   backup false
   source 'crontab.erb'
+  variables :daytime_limit => Hectic.smallest_account_limit(node)
   owner 'root'
   group 'root'
   mode 0644

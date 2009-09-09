@@ -18,6 +18,10 @@ class Hectic
     new(node).hosts.map { |host| host['local_name'] }
   end
 
+  def self.smallest_account_limit(node)
+    accounts(node).map { |account| account['limit'].to_i }.reject { |limit| limit.zero? }.min
+  end
+
   # And here's the "lower level" interface.
   def initialize(node)
     @database_config = node[:hectic][:db]
