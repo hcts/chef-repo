@@ -67,7 +67,7 @@ From time to time, I may make updates to the chef cookbooks. I'll notify you if 
 
 Every few hours, rsnapshot runs to take a backup of the important data on the system. See /etc/cron.d/rsnapshot and /etc/rsnapshot.conf.
 
-Backups are placed under /var/backups/rsnapshot. The latest backup is also exported on a read-only samba share called "snapshot".
+Backups are placed under /var/backups/rsnapshot.
 
 == Samba
 

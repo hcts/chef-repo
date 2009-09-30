@@ -18,10 +18,3 @@
   writable = yes
   guest ok = no
   valid users = samba
-
-[snapshots]
-  comment = Snapshots
-  path = <%= @node[:rsnapshot][:root] %>/hourly.0
-  writable = no
-  guest ok = no
-  valid users = samba
