@@ -71,3 +71,11 @@ There is one share, named "samba" and accessed with username "samba". The conten
 == Squid HTTP Proxy
 
 For the radio staff, there is an HTTP proxy server running at 192.168.0.1:3128.
+
+== Remote Desktop Access
+
+Rather than making a VNC connection to the server, you can simply use the Windows "Remote Desktop Connection" tool in Start -> All Programs -> Accessories -> Remote Desktop Connection. (The Remote Desktop service will be started automatically when the system boots, so you won't have to start it from a console session as before.)
+
+Your session will persist across connections, so you won't lose your window positions or open programs.
+
+You'll probably want to save your connection settings in an RDP file on your Windows desktop, to make it easy to reconnect in the future. Click the "Options >>" button in the initial Remote Desktop Connection dialog for more.

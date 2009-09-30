@@ -1,0 +1,5 @@
+package 'xubuntu-desktop'
+package 'xfce4-cpugraph-plugin'
+package 'xfce4-netload-plugin'
+package 'xfce4-systemload-plugin'
+package 'xfce4-terminal'
