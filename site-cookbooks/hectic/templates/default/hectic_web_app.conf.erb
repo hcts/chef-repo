@@ -21,7 +21,7 @@
     AuthType Basic
     AuthName "Hectic Account Management App"
     AuthPAM_Enabled on
-    Require group admin
+    Require valid-user
 
     # I wanted the above to be all that was necessary for PAM authentication,
     # but it wasn't. It turns out we need these workarounds, specified here:
