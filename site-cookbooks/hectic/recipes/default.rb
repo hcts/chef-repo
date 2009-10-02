@@ -6,6 +6,13 @@ require 'pathname'
 package 'libapache2-mod-auth-pam'
 apache_module 'auth_pam'
 
+# www-data has to be in the shadow group to do PAM authentication
+group 'shadow' do
+  action :modify
+  members 'www-data'
+  append true
+end
+
 mysql_database node[:hectic][:db][:database] do
   username node[:hectic][:db][:username]
   password node[:hectic][:db][:password]

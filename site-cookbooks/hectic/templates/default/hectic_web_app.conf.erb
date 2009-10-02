@@ -20,8 +20,15 @@
 
     AuthType Basic
     AuthName "Hectic Account Management App"
-    AuthPAM_Enabled On
+    AuthPAM_Enabled on
     Require group admin
+
+    # I wanted the above to be all that was necessary for PAM authentication,
+    # but it wasn't. It turns out we need these workarounds, specified here:
+    # http://blog.thirsch.de/2007/02/21/how-to-get-mod_auth_pam-running-on-apache-22x/
+    AuthPAM_FallThrough off
+    AuthBasicAuthoritative off
+    AuthUserFile /dev/null
   </Directory>
 
   LogLevel info
