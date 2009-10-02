@@ -19,7 +19,8 @@
     "samba",
     "squid",
     "xubuntu",
-    "xrdp"
+    "xrdp",
+    "alpine"
   ],
 
   "apache":    { "listen_ports": [80] },
