@@ -38,6 +38,8 @@ Lower-level dialin logs for each modem are kept in /var/log/mgetty.
 
 == Mail
 
+You can manage customer mail accounts at http://192.168.0.1. There is no longer a separate login for this application; just use your unix username and password.
+
 Customer mailboxes are kept in /var/mail/virtual/elct.org/*.
 
 When you need to get into a mailbox to remove large messages at a customer's request, you can use `alpine`, an updated version of the `pine` you're familiar with. Here's how:
