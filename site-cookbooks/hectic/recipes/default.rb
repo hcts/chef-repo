@@ -1,6 +1,11 @@
 require 'chef-deploy'
 require 'pathname'
 
+# It's kind of nice, I suppose, to keep app access in sync with the server
+# adminstrators' unix accounts. So, let's try this:
+package 'libapache2-mod-auth-pam'
+apache_module 'auth_pam'
+
 mysql_database node[:hectic][:db][:database] do
   username node[:hectic][:db][:username]
   password node[:hectic][:db][:password]
@@ -45,20 +50,10 @@ deploy node[:hectic][:deploy_to] do
   end
 end
 
-template node[:hectic][:server_password_file] do
-  source 'htpasswd.erb'
-  variables :username => node[:hectic][:server_username], :password => node[:hectic][:server_password]
-  owner node[:apache][:user]
-  group node[:apache][:user]
-  mode 0600
-end
-
 web_app 'hectic' do
   docroot "#{node[:hectic][:deploy_to]}/current/public"
   server_name node[:hectic][:server_name]
   server_aliases node[:hectic][:server_aliases]
-  server_username node[:hectic][:server_username]
-  server_password_file node[:hectic][:server_password_file]
   rails_env node[:hectic][:environment]
   template 'hectic_web_app.conf.erb'
 end

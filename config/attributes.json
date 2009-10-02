@@ -32,8 +32,7 @@
 
   "rails":     { "version": "2.3.4" },
 
-  "hectic":    { "server_password":  "---",
-                 "db": { "password": "---" } },
+  "hectic":    { "db": { "password": "---" } },
 
   "postfix":   { "default_relayhost":          "---",
                  "default_relayhost_username": "---",

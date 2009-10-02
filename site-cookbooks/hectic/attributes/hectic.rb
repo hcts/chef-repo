@@ -1,12 +1,9 @@
-set.hectic.deploy_to            = '/var/www/apps/hectic'
-set.hectic.revision             = '672b694c36425273d99b86565069fa0d017fa4ff'
-set.hectic.server_password_file = "#{hectic.deploy_to}/shared/passwd"
+set.hectic.deploy_to = '/var/www/apps/hectic'
+set.hectic.revision  = '672b694c36425273d99b86565069fa0d017fa4ff'
 
 set_unless.hectic.repository      = 'git://github.com/matthewtodd/hectic.git'
 set_unless.hectic.server_name     = fqdn
 set_unless.hectic.server_aliases  = []
-set_unless.hectic.server_username = 'admin'
-set_unless.hectic.server_password = random_password(8)
 set_unless.hectic.environment     = 'production'
 
 set_unless.hectic.db.database     = 'hectic'

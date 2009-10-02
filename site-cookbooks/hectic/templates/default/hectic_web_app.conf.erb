@@ -20,8 +20,8 @@
 
     AuthType Basic
     AuthName "Hectic Account Management App"
-    AuthUserFile <%= @params[:server_password_file] %>
-    Require user <%= @params[:server_username] %>
+    AuthPAM_Enabled On
+    Require group admin
   </Directory>
 
   LogLevel info
