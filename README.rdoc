@@ -50,6 +50,8 @@ Note that we need to use `sudo -i` to get a root shell because regular users don
 
 The -i flag to alpine means "start in the inbox" and is only there for your convenience.
 
+If you would like to email all the elct.org customers, you may do so at customers@elct.org.local.
+
 == Chef
 
 All the important system configuration files, including /etc/fetchmailrc and /etc/ppp/pap-secrets, are automatically generated when chef runs. Chef is currently set in /etc/cron.d/chef to run every hour.
