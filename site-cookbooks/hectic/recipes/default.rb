@@ -11,6 +11,7 @@ group 'shadow' do
   action :modify
   members 'www-data'
   append true
+  notifies :restart, resources(:service => 'apache2')
 end
 
 mysql_database node[:hectic][:db][:database] do
