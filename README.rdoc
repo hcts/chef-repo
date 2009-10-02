@@ -45,8 +45,7 @@ Customer mailboxes are kept in /var/mail/virtual/elct.org/*.
 When you need to get into a mailbox to remove large messages at a customer's request, you can use `alpine`, an updated version of the `pine` you're familiar with. Here's how:
 
  sudo -i
- cd /var/mail/virtual/elct.org
- alpine -i -inbox-path=henry
+ alpine -i -inbox-path=/var/mail/virtual/elct.org/henry
 
 Note that we need to use `sudo -i` to get a root shell because regular users don't have access to customer mailboxes.
 
