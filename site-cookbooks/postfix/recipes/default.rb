@@ -76,7 +76,7 @@ end
 database_configuration_hash = Hash.new
 node[:hectic][:db].each_attribute { |k,v| database_configuration_hash[k]=v }
 
-%w{relay_hosts smtp_passwords virtual_mailboxes}.each do |config|
+%w{relay_hosts smtp_passwords virtual_aliases virtual_mailboxes}.each do |config|
   template "/etc/postfix/#{config}.cf" do
     source "#{config}.cf.erb"
     variables database_configuration_hash
