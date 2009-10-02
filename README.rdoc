@@ -58,8 +58,9 @@ ANY CHANGES YOU MAKE TO THESE FILES WILL BE ERASED THE NEXT TIME CHEF RUNS! The 
 
 So, if you add a new customer, it can take up to an hour (for the next chef run) until that customer can dial in and check mail.
 
-From time to time, I may make updates to the chef cookbooks. I'll notify you if I do, of course! Often, I may not even need to come in to perform the updates. Instead, you'll just run the following commands as root (sudo -i):
+From time to time, I may make updates to the chef cookbooks. I'll notify you if I do, of course! Often, I may not even need to come in to perform the updates. Instead, you'll just run the following commands:
 
+ sudo -i
  cd /srv/chef
  git pull
  git submodule update
