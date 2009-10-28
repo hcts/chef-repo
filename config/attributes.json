@@ -20,7 +20,8 @@
     "squid",
     "xubuntu",
     "xrdp",
-    "alpine"
+    "alpine",
+    "bracken"
   ],
 
   "apache":    { "listen_ports": [80] },
