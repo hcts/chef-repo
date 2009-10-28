@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+base_mailbox_path = '<%= Hectic.base_mailbox_paths(node).first %>'
+customer = ARGV.shift
+
+exec "alpine -i -inbox-path=#{base_mailbox_path}/#{customer}"
