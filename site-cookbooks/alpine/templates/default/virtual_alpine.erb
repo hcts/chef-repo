@@ -3,4 +3,4 @@
 base_mailbox_path = '<%= @node[:postfix][:virtual_mailbox_base] %>/<%= Hectic.base_mailbox_paths(@node).first %>'
 customer = ARGV.shift
 
-exec "alpine -i -inbox-path=#{base_mailbox_path}/#{customer}"
+exec "sudo alpine -i -inbox-path=#{base_mailbox_path}/#{customer}"
