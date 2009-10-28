@@ -1,10 +1,7 @@
 file '/var/log/syslog' do
-  on 'devecot',      /pop3-login/
-
+  on 'dovecot',      /pop3-login/
   on 'fetchmail',    /reading message/
   on 'fetchmail',    /skipping message/
-
   on 'postfix/smtp', /bounce/
-
   on 'pppd',         /peer authentication/
 end
