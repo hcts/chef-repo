@@ -1,6 +1,6 @@
 gem_package 'bracken' do
   source 'http://gemcutter.org'
-  version '0.1.0'
+  version '0.1.1'
 end
 
 template '/etc/bracken.rb' do
