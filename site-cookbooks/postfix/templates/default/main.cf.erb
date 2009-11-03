@@ -32,7 +32,7 @@ recipient_delimiter = +
 inet_interfaces = all
 
 # Virtual mailboxes
-virtual_mailbox_domains = <%= @virtual_mailbox_domains %>
+virtual_mailbox_domains = <%= @virtual_mailbox_domains.join(', ') %>
 virtual_mailbox_base = <%= @node[:postfix][:virtual_mailbox_base] %>
 virtual_mailbox_maps = mysql:/etc/postfix/virtual_mailboxes.cf
 virtual_uid_maps = static:<%= Etc.getpwnam('nobody').uid %>
