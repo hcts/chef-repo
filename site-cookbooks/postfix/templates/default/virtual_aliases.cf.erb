@@ -7,4 +7,4 @@
 user     = <%= @username %>
 password = <%= @password %>
 dbname   = <%= @database %>
-query    = SELECT accounts.local_email FROM accounts JOIN hosts ON accounts.host_id = hosts.id WHERE CONCAT('customers@', hosts.local_name)='%s'
+query    = SELECT accounts.local_email FROM accounts JOIN hosts ON accounts.host_id = hosts.id WHERE CONCAT('customers@', hosts.local_name)='%s' AND accounts.enabled=1

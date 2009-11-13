@@ -28,7 +28,7 @@ class Hectic
   end
 
   def accounts
-    query('SELECT * FROM hosts JOIN accounts ON hosts.id=accounts.host_id ORDER BY hosts.name, accounts.username')
+    query('SELECT * FROM hosts JOIN accounts ON hosts.id=accounts.host_id WHERE accounts.enabled=1 ORDER BY hosts.name, accounts.username')
   end
 
   def hosts

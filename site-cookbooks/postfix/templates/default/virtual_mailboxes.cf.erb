@@ -7,4 +7,4 @@
 user     = <%= @username %>
 password = <%= @password %>
 dbname   = <%= @database %>
-query    = SELECT mailbox_path FROM accounts WHERE local_email='%s'
+query    = SELECT mailbox_path FROM accounts WHERE local_email='%s' AND enabled=1

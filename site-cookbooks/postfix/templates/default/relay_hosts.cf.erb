@@ -8,4 +8,4 @@
 user     = <%= @username %>
 password = <%= @password %>
 dbname   = <%= @database %>
-query    = SELECT hosts.smtp_server FROM hosts JOIN accounts ON hosts.id = accounts.host_id WHERE accounts.email='%s'
+query    = SELECT hosts.smtp_server FROM hosts JOIN accounts ON hosts.id = accounts.host_id WHERE accounts.email='%s' AND accounts.enabled=1
