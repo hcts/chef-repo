@@ -14,6 +14,9 @@ group 'shadow' do
   notifies :restart, resources(:service => 'apache2')
 end
 
+# Hectic shells out to rrdtool to keep time-series logs of network activity.
+package 'rrdtool'
+
 mysql_database node[:hectic][:db][:database] do
   username node[:hectic][:db][:username]
   password node[:hectic][:db][:password]
@@ -34,11 +37,9 @@ capistrano_deployment_structure node[:hectic][:deploy_to] do
   database_configuration database_configuration_hash
 end
 
-# Include gem dependencies here because of a bug in chef-deploy: the code that
-# reads gems.yml references Chef::Exception, but it should be
-# Chef::Exceptions, with an s on the end. And I kind of felt a little weird
-# about the yaml file anyway.
-gem_package 'haml'
+# Gem dependencies are now bundled inside the Hectic app.
+# But we'll still need bundler to unpack them.
+gem_package 'bundler', :source => 'http://gemcutter.org'
 
 deploy node[:hectic][:deploy_to] do
   repo node[:hectic][:repository]

@@ -1,5 +1,5 @@
 set.hectic.deploy_to = '/var/www/apps/hectic'
-set.hectic.revision  = '672b694c36425273d99b86565069fa0d017fa4ff'
+set.hectic.revision  = 'a81d851e19394a7e4f4dff88290f88a48adade9f'
 
 set_unless.hectic.repository      = 'git://github.com/matthewtodd/hectic.git'
 set_unless.hectic.server_name     = fqdn

@@ -6,7 +6,6 @@
     "apache2",
     "passenger_apache2::mod_rails",
     "mysql::server",
-    "rails",
     "git",
     "extensions",
     "rsnapshot",
