@@ -5,7 +5,8 @@ define :capistrano_deployment_structure, :action => :create do
     "#{params[:name]}/shared",
     "#{params[:name]}/shared/config",
     "#{params[:name]}/shared/log",
-    "#{params[:name]}/shared/pids"
+    "#{params[:name]}/shared/pids",
+    "#{params[:name]}/shared/system"
   ]
 
   cap_directories.each do |path|
