@@ -39,7 +39,9 @@ end
 
 # Gem dependencies are now bundled inside the Hectic app.
 # But we'll still need bundler to unpack them.
-gem_package 'bundler', :source => 'http://gemcutter.org'
+gem_package 'bundler' do
+  source 'http://gemcutter.org'
+end
 
 deploy node[:hectic][:deploy_to] do
   repo node[:hectic][:repository]
