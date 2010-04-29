@@ -28,3 +28,10 @@ template '/etc/xrdp/xrdp.ini' do
   mode 0644
   notifies :restart, resources(:service => 'xrdp')
 end
+
+template '/etc/PolicyKit/PolicyKit.conf' do
+  source 'PolicyKit.conf.erb'
+  owner 'root'
+  group 'root'
+  mode 0644
+end
