@@ -4,6 +4,50 @@ This project's a chef repository for a dialup satellite email server I've put to
 
 The rest of this README is a handover document that you probably won't find useful or interesting.
 
+== Bootstrapping
+
+I've given you an installation CD you can use. If anything ever happens to it, you can re-create one from http://github.com/matthewtodd/hcts-bootstrapper.
+
+Boot the installation CD, follow through the process, and reboot the system.
+
+Then, log in and:
+
+ # Become root.
+ sudo -i
+
+ # Download the chef recipes.
+ git clone git://github.com/matthewtodd/hcts.git /srv/chef
+ cd /srv/chef
+ git submodule init
+ git submodule update
+
+ # Configure chef attributes. (Mostly just passwords.)
+ cd /etc/chef
+ cp /src/chef/config/attributes.json .
+ vi attributes.json
+
+ # Run chef.
+ chef-solo
+
+Once you've done that, you can schedule chef-solo to run every hour:
+
+ vi /etc/cron.d/chef
+
+Then, if you're restoring data from a backup (say on a USB stick):
+
+ rsnapshot-restore /media/UDISK/latest.tar.gz
+
+And that's it!
+
+You can add additional *administrative* users -- NOT customers -- with this commands:
+
+ sudo adduser henry
+
+If henry should also have permission to use sudo, you would instead:
+
+ sudo adduser henry
+ sudo adduser henry admin
+
 == Logfiles
 
 I've written a tool called `bracken` that functions like a filtering version of `tail -f`. Bracken reads its configuration from /etc/bracken.rb.
@@ -40,6 +84,10 @@ From time to time, I may make updates to the chef cookbooks. I'll notify you if 
  git submodule update
  chef-solo
 
+== Samba
+
+There is one main share, named "samba" and accessed with username "samba". The contents of this share are included in the rsnapshot backups.
+
 == Backups
 
 Every few hours, rsnapshot runs to take a backup of the important data on the system. See /etc/cron.d/rsnapshot and /etc/rsnapshot.conf.
@@ -50,9 +98,18 @@ You can see the disk space used by all the backups with the following command:
 
  sudo rsnapshot du
 
-== Samba
+A tarball of the latest backup is always available under /var/lib/samba/backup, which you can reach from other machines as the samba share "backup".
 
-There is one main share, named "samba" and accessed with username "samba". The contents of this share are included in the rsnapshot backups.
+To restore a backup from the hard disk:
+
+ sudo -i
+ cd /var/backups/rsnapshot/hourly.0
+ rsnapshot-restore
+
+To restore a backup from a tarball:
+
+ sudo -i
+ rsnapshot-restore /media/UDISK/latest.tar.gz
 
 == Squid HTTP Proxy
 
