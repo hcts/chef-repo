@@ -1,8 +1,36 @@
 #!/usr/bin/env ruby
 
 require 'pathname'
+require 'tempfile'
 
 class Pathname
+  def extract!
+    Dir.mktmpdir do |path|
+      full_path = expand_path
+
+      Dir.chdir(path) do
+        puts "Extracting #{full_path}:"
+        system "/bin/tar zxf #{full_path}"
+      end
+
+      yield full_path
+    end
+  end
+
+  def restore
+    join('<%= @node[:fqdn] %>').must_exist! do |backup|
+      puts "Restoring from #{backup}:"
+      system "/usr/bin/rsync --archive --verbose #{backup}/ /"
+    end
+
+    join('<%= @node[:fqdn] %>-other', 'mysqldump.sql.gz').must_exist! do |backup|
+      puts "Restoring MySQL databases from #{backup}:"
+      system "/bin/gunzip --to-stdout #{backup} | /usr/bin/mysql -u root -p<%= @node[:mysql][:server_root_password] %> -s"
+    end
+  end
+
+  private
+
   def must_exist!
     if exist?
       yield expand_path
@@ -12,12 +40,8 @@ class Pathname
   end
 end
 
-Pathname.new('<%= @node[:fqdn] %>').must_exist! do |backup|
-  puts "Restoring from #{backup}:"
-  system "/usr/bin/rsync --archive --verbose #{backup}/ /"
-end
-
-Pathname.new('<%= @node[:fqdn] %>-other').join('mysqldump.sql.gz').must_exist! do |backup|
-  puts "Restoring MySQL databases from #{backup}:"
-  system "/bin/gunzip --to-stdout #{backup} | /usr/bin/mysql -u root -p<%= @node[:mysql][:server_root_password] %> -s"
+if ARGV.any?
+  Pathname.new(ARGV.shift).extract! { |path| path.restore }
+else
+  Pathname.pwd.restore
 end
