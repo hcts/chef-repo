@@ -40,6 +40,10 @@ class Pathname
   end
 end
 
+unless Process.euid == 0
+  abort "#{$0} must be run as root."
+end
+
 if ARGV.any?
   Pathname.new(ARGV.shift).extract! { |path| path.restore }
 else
