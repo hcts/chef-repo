@@ -24,4 +24,10 @@ template '/etc/cron.d/rsnapshot' do
   mode 0644
 end
 
-rsnapshot_backup '/var/log'
+template '/usr/local/bin/rsnapshot-restore' do
+  backup false
+  source 'rsnapshot-restore.erb'
+  owner 'root'
+  group 'root'
+  mode 0755
+end

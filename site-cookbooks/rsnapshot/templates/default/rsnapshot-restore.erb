@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'pathname'
+
+class Pathname
+  def must_exist!
+    if exist?
+      yield expand_path
+    else
+      abort "Directory #{self} does not exist."
+    end
+  end
+end
+
+Pathname.new('<%= @node[:fqdn] %>').must_exist! do |backup|
+  puts "Restoring from #{backup}:"
+  system "/usr/bin/rsync --archive --verbose #{backup}/ /"
+end

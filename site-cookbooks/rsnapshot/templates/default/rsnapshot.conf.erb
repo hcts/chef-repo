@@ -19,6 +19,8 @@ lockfile	/var/run/rsnapshot.pid
 
 # Since rsnapshot doesn't natively support including fragments from
 # /etc/rsnapshot.d, we fake it with Chef.
+backup		/var/log/	<%= @node[:fqdn] %>-other/
+
 <% @fragments_directory.children.each do |fragment| %>
 <%= fragment.read.strip %>
 <% end %>
