@@ -25,3 +25,5 @@ backup_script	/usr/bin/mysqldump -u root -p<%= @node[:mysql][:server_root_passwo
 <% @fragments_directory.children.each do |fragment| %>
 <%= fragment.read.strip %>
 <% end %>
+
+cmd_postexec	cd <%= File.expand_path(@node[:rsnapshot][:root]) %>/hourly.0 && /bin/tar czf <%= File.expand_path(@node[:samba][:backup]) %>/latest.tar.gz *

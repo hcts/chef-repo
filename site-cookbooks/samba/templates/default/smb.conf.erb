@@ -9,6 +9,16 @@
   bind interfaces only = yes
   syslog only = yes
 
+[backup]
+  comment = Backup
+  path = <%= @node[:samba][:backup] %>
+  force user = <%= @node[:samba][:user] %>
+  force group = <%= @node[:samba][:group] %>
+  veto files = /*.inf/*.Inf/*.INF/*.lnk/
+  writable = no
+  guest ok = no
+  valid users = samba
+
 [samba]
   comment = Samba
   path = <%= @node[:samba][:path] %>

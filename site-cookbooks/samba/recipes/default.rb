@@ -17,6 +17,12 @@ user node[:samba][:user] do
   shell '/bin/false'
 end
 
+directory node[:samba][:backup] do
+  owner node[:samba][:user]
+  group node[:samba][:group]
+  recursive true
+end
+
 directory node[:samba][:path] do
   owner node[:samba][:user]
   group node[:samba][:group]

@@ -1,6 +1,7 @@
-set.samba.path  = '/var/lib/samba/share'
-set.samba.user  = 'samba'
-set.samba.group = 'samba'
+set.samba.backup = '/var/lib/samba/backup'
+set.samba.path   = '/var/lib/samba/share'
+set.samba.user   = 'samba'
+set.samba.group  = 'samba'
 
 set_unless.samba.workgroup  = domain.split('.').first.upcase
 set_unless.samba.name       = hostname.upcase
