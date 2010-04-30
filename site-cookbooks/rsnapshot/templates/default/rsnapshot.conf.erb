@@ -20,6 +20,7 @@ lockfile	/var/run/rsnapshot.pid
 # Since rsnapshot doesn't natively support including fragments from
 # /etc/rsnapshot.d, we fake it with Chef.
 backup		/var/log/	<%= @node[:fqdn] %>-other/
+backup_script	/usr/bin/mysqldump -u root -p<%= @node[:mysql][:server_root_password] %> | /bin/gzip > mysqldump.sql.gz	<%= @node[:fqdn] %>-other/
 
 <% @fragments_directory.children.each do |fragment| %>
 <%= fragment.read.strip %>

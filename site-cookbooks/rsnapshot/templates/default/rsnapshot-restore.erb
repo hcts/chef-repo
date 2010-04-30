@@ -16,3 +16,8 @@ Pathname.new('<%= @node[:fqdn] %>').must_exist! do |backup|
   puts "Restoring from #{backup}:"
   system "/usr/bin/rsync --archive --verbose #{backup}/ /"
 end
+
+Pathname.new('<%= @node[:fqdn] %>-other').join('mysqldump.sql.gz').must_exist! do |backup|
+  puts "Restoring MySQL databases from #{backup}:"
+  system "/bin/gunzip --to-stdout #{backup} | /usr/bin/mysql -u root -p<%= @node[:mysql][:server_root_password] %> -s"
+end
