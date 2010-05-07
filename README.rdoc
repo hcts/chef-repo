@@ -102,14 +102,11 @@ A tarball of the latest backup is always available under /var/lib/samba/backup, 
 
 To restore a backup from the hard disk:
 
- sudo -i
- cd /var/backups/rsnapshot/hourly.0
- rsnapshot-restore
+ sudo rsnapshot-restore /var/backups/rsnapshot/hourly.0
 
 To restore a backup from a tarball:
 
- sudo -i
- rsnapshot-restore /media/UDISK/latest.tar.gz
+ sudo rsnapshot-restore /media/UDISK/latest.tar.gz
 
 == Squid HTTP Proxy
 
