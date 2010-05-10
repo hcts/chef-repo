@@ -3,8 +3,8 @@
 
 rsnapshot_root = '<%= File.expand_path(@node[:rsnapshot][:root]) %>'
 samba_backup   = '<%= File.expand_path(@node[:samba][:backup]) %>'
-samba_user     = '<%= File.expand_path(@node[:samba][:user]) %>'
-samba_group    = '<%= File.expand_path(@node[:samba][:group]) %>'
+samba_user     = '<%= @node[:samba][:user] %>'
+samba_group    = '<%= @node[:samba][:group] %>'
 
 Dir.chdir("#{rsnapshot_root}/hourly.0") do
   system "/bin/tar czf #{samba_backup}/latest.tar.gz *"
