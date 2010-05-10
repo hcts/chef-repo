@@ -31,3 +31,11 @@ template '/usr/local/bin/rsnapshot-restore' do
   group 'root'
   mode 0755
 end
+
+template '/usr/local/libexec/rsnapshot-tarball' do
+  backup false
+  source 'rsnapshot-tarball.erb'
+  owner 'root'
+  group 'root'
+  mode 0755
+end

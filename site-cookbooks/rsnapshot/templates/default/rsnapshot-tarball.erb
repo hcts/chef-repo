@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+# vim: set filetype=ruby:
+
+rsnapshot_root = '<%= File.expand_path(@node[:rsnapshot][:root]) %>'
+samba_backup   = '<%= File.expand_path(@node[:samba][:backup]) %>'
+
+Dir.chdir("#{rsnapshot_root}/hourly.0") do
+  system "/bin/tar czf #{samba_backup}/latest.tar.gz *"
+end
