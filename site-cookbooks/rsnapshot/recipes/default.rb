@@ -32,6 +32,13 @@ template '/usr/local/bin/rsnapshot-restore' do
   mode 0755
 end
 
+template '/usr/local/libexec/rsnapshot-mysqldump' do
+  backup false
+  source 'rsnapshot-mysqldump.erb'
+  owner 'root'
+  group 'root'
+  mode 0755
+end
 template '/usr/local/libexec/rsnapshot-tarball' do
   backup false
   source 'rsnapshot-tarball.erb'

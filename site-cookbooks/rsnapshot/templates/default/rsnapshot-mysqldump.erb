@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# vim: set filetype=ruby:
+
+password = '<%= @node[:mysql][:server_root_password] %>'
+
+system "/usr/bin/mysqldump -u root -p#{password} | /bin/gzip > mysqldump.sql.gz"
