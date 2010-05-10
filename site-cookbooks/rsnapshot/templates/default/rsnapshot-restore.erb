@@ -14,7 +14,7 @@ class Pathname
         system "/bin/tar zxf #{full_path}"
       end
 
-      yield full_path
+      yield Pathname.new(path)
     end
   end
 
