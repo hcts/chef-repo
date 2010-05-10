@@ -34,7 +34,7 @@ end
 
 # Gem dependencies are now bundled inside the Hectic app.
 # But we'll still need bundler to unpack them.
-gem_package 'bundler' do
+gem_package 'bundler08' do
   source 'http://gemcutter.org'
 end
 
