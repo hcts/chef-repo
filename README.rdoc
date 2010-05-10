@@ -6,7 +6,7 @@ The rest of this README is a handover document that you probably won't find usef
 
 == Bootstrapping
 
-I've given you an installation CD you can use. If anything ever happens to it, you can re-create one from http://github.com/matthewtodd/hcts-bootstrapper.
+I've given you an installation CD you can use. If anything ever happens to it, you can re-create one from http://github.com/hcts/bootstrap.
 
 Boot the installation CD, follow through the process, and reboot the system.
 
@@ -16,7 +16,7 @@ Then, log in and:
  sudo -i
 
  # Download the chef recipes.
- git clone git://github.com/matthewtodd/hcts.git /srv/chef
+ git clone git://github.com/hcts/chef-repo.git /srv/chef
  cd /srv/chef
  git submodule init
  git submodule update
