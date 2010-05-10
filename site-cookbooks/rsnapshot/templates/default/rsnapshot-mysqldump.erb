@@ -3,4 +3,4 @@
 
 password = '<%= @node[:mysql][:server_root_password] %>'
 
-system "/usr/bin/mysqldump -u root -p#{password} | /bin/gzip > all-databases.sql.gz"
+system "/usr/bin/mysqldump -u root -p#{password} --all-databases | /bin/gzip > all-databases.sql.gz"
