@@ -24,7 +24,7 @@ class Pathname
       system "/usr/bin/rsync --archive --verbose #{backup}/ /"
     end
 
-    join('<%= @node[:fqdn] %>-other', 'mysqldump.sql.gz').must_exist! do |backup|
+    join('<%= @node[:fqdn] %>-mysql', 'all-databases.sql.gz').must_exist! do |backup|
       puts "Restoring MySQL databases from #{backup}:"
       system "/bin/gunzip --to-stdout #{backup} | /usr/bin/mysql -u root -p<%= @node[:mysql][:server_root_password] %> -s"
     end
