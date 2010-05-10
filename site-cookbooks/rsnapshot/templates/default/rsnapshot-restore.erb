@@ -18,6 +18,14 @@ class Pathname
     end
   end
 
+  def must_exist!
+    if exist?
+      yield expand_path
+    else
+      abort "Directory #{self} does not exist."
+    end
+  end
+
   def restore
     join('<%= @node[:fqdn] %>').must_exist! do |backup|
       puts "Restoring from #{backup}:"
@@ -27,16 +35,6 @@ class Pathname
     join('<%= @node[:fqdn] %>-mysql', 'all-databases.sql.gz').must_exist! do |backup|
       puts "Restoring MySQL databases from #{backup}:"
       system "/bin/gunzip --to-stdout #{backup} | /usr/bin/mysql -u root -p<%= @node[:mysql][:server_root_password] %> -s"
-    end
-  end
-
-  private
-
-  def must_exist!
-    if exist?
-      yield expand_path
-    else
-      abort "Directory #{self} does not exist."
     end
   end
 end
