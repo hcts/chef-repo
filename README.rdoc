@@ -1,12 +1,15 @@
 = HCTS Dialup Server
 
-This project's a chef repository for a dialup satellite email server I've put together for a local organization.
+This project's a chef repository for a dialup satellite email server I've put
+together for a local organization.
 
-The rest of this README is a handover document that you probably won't find useful or interesting.
+The rest of this README is a handover document that you probably won't find
+useful or interesting.
 
 == Bootstrapping
 
-I've given you an installation CD you can use. If anything ever happens to it, you can re-create one from http://github.com/hcts/bootstrap.
+I've given you an installation CD you can use. If anything ever happens to it,
+you can re-create one from http://github.com/hcts/bootstrap.
 
 Boot the installation CD, follow through the process, and reboot the system.
 
@@ -39,7 +42,8 @@ Then, if you're restoring data from a backup (say on a USB stick):
 
 And that's it!
 
-You can add additional *administrative* users -- NOT customers -- with this commands:
+You can add additional *administrative* users -- NOT customers -- with this
+command:
 
  sudo adduser henry
 
@@ -50,33 +54,47 @@ If henry should also have permission to use sudo, you would instead:
 
 == Logfiles
 
-I've written a tool called `bracken` that functions like a filtering version of `tail -f`. Bracken reads its configuration from /etc/bracken.rb.
+I've written a tool called `bracken` that functions like a filtering version of
+`tail -f`. Bracken reads its configuration from /etc/bracken.rb.
 
 To run it, simply use the following command:
 
  bracken
 
-Bracken will continue to tail the logfiles listed in /etc/bracken.rb, even after each morning's logfile rotation.
+Bracken will continue to tail the logfiles listed in /etc/bracken.rb, even
+after each morning's logfile rotation.
 
 == Mail
 
-You can manage customer mail accounts at http://192.168.0.1. There is no longer a separate login for this application; just use your unix username and password.
+You can manage customer mail accounts at http://192.168.0.1. There is no longer
+a separate login for this application; just use your unix username and
+password.
 
-When you need to get into a mailbox to remove or forward large messages at a customer's request, you can use a wrapper script `virtual_alpine` like this:
+When you need to get into a mailbox to remove or forward large messages at a
+customer's request, you can use a wrapper script `virtual_alpine` like this:
 
  virtual_alpine henry
 
-If you would like to email all the elct.org customers, you may do so at customers@elct.org.local.
+If you would like to email all the elct.org customers, you may do so at
+customers@elct.org.local.
 
 == Chef
 
-All the important system configuration files, including /etc/fetchmailrc and /etc/ppp/pap-secrets, are automatically generated when chef runs. Chef is currently set in /etc/cron.d/chef to run every hour.
+All the important system configuration files, including /etc/fetchmailrc and
+/etc/ppp/pap-secrets, are automatically generated when chef runs. Chef is
+currently set in /etc/cron.d/chef to run every hour.
 
-ANY CHANGES YOU MAKE TO THESE FILES WILL BE ERASED THE NEXT TIME CHEF RUNS! The proper way to change them is to add, edit, and delete customers via the web interface at http://192.168.0.1/. Chef then reads this database to generate the appropriate configuration files.
+ANY CHANGES YOU MAKE TO THESE FILES WILL BE ERASED THE NEXT TIME CHEF RUNS! The
+proper way to change them is to add, edit, and delete customers via the web
+interface at http://192.168.0.1/. Chef then reads this database to generate the
+appropriate configuration files.
 
-So, if you add a new customer, it can take up to an hour (for the next chef run) until that customer can dial in and check mail.
+So, if you add a new customer, it can take up to an hour (for the next chef
+run) until that customer can dial in and check mail.
 
-From time to time, I may make updates to the chef cookbooks. I'll notify you if I do, of course! Often, I may not even need to come in to perform the updates. Instead, you'll just run the following commands:
+From time to time, I may make updates to the chef cookbooks. I'll notify you if
+I do, of course! Often, I may not even need to come in to perform the updates.
+Instead, you'll just run the following commands:
 
  sudo -i
  cd /srv/chef
@@ -86,11 +104,13 @@ From time to time, I may make updates to the chef cookbooks. I'll notify you if 
 
 == Samba
 
-There is one main share, named "samba" and accessed with username "samba". The contents of this share are included in the rsnapshot backups.
+There is one main share, named "samba" and accessed with username "samba". The
+contents of this share are included in the rsnapshot backups.
 
 == Backups
 
-Every few hours, rsnapshot runs to take a backup of the important data on the system. See /etc/cron.d/rsnapshot and /etc/rsnapshot.conf.
+Every few hours, rsnapshot runs to take a backup of the important data on the
+system. See /etc/cron.d/rsnapshot and /etc/rsnapshot.conf.
 
 Backups are placed under /var/backups/rsnapshot.
 
@@ -98,7 +118,8 @@ You can see the disk space used by all the backups with the following command:
 
  sudo rsnapshot du
 
-A tarball of the latest backup is always available under /var/lib/samba/backup, which you can reach from other machines as the samba share "backup".
+A tarball of the latest backup is always available under /var/lib/samba/backup,
+which you can reach from other machines as the samba share "backup".
 
 To restore a backup from the hard disk:
 
@@ -114,8 +135,15 @@ For the radio staff, there is an HTTP proxy server running at 192.168.0.1:3128.
 
 == Remote Desktop Access
 
-Rather than making a VNC connection to the server, you can simply use the Windows "Remote Desktop Connection" tool in Start -> All Programs -> Accessories -> Remote Desktop Connection. (The Remote Desktop service will be started automatically when the system boots, so you won't have to start it from a console session as before.)
+Rather than making a VNC connection to the server, you can simply use the
+Windows "Remote Desktop Connection" tool in Start -> All Programs ->
+Accessories -> Remote Desktop Connection. (The Remote Desktop service will be
+started automatically when the system boots, so you won't have to start it from
+a console session as before.)
 
-Your session will persist across connections, so you won't lose your window positions or open programs.
+Your session will persist across connections, so you won't lose your window
+positions or open programs.
 
-You'll probably want to save your connection settings in an RDP file on your Windows desktop, to make it easy to reconnect in the future. Click the "Options >>" button in the initial Remote Desktop Connection dialog for more.
+You'll probably want to save your connection settings in an RDP file on your
+Windows desktop, to make it easy to reconnect in the future. Click the "Options
+>>" button in the initial Remote Desktop Connection dialog for more.
