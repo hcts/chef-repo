@@ -98,7 +98,7 @@ Instead, you'll just run the following commands:
 
  sudo -i
  cd /srv/chef
- git pull
+ git pull origin master
  git submodule update
  chef-solo
 
