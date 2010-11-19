@@ -35,8 +35,8 @@
 
   "hectic":    { "db": { "password": "---" } },
 
-  "postfix":   { "default_relayhost":          "---",
-                 "default_relayhost_username": "---",
+  "postfix":   { "default_relayhost":          "smtp2.elct.org",
+                 "default_relayhost_username": "hcts@elct.org",
                  "default_relayhost_password": "---",
                  "root_mail_to":               "---" },
 
@@ -44,10 +44,10 @@
 
   "modems":    [{ "device": "ttyS0",
                   "speed":  57600,
-                  "remote_ip_address": "---" },
+                  "remote_ip_address": 192.168.0.10 },
                 { "device": "ttyS1",
                   "speed":  57600,
-                  "remote_ip_address": "---" }],
+                  "remote_ip_address": 192.168.0.20 }],
 
   "samba":     { "password": "---" }
 }

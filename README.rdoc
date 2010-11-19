@@ -43,6 +43,16 @@ Log in as hcts, and:
  git submodule update
 
  # Configure chef attributes. (Mostly just passwords.)
+ #
+ # As you use the following commands to edit the attributes file, you'll be
+ # changing the values for:
+ #
+ # - mysql.server_root_password:         any value will do
+ # - hectic.db.password:                 any value will do
+ # - postfix.default_relayhost_password: the smtp password for hcts@elct.org
+ # - postfix.root_mail_to:               hcts (or whatever user you created above)
+ # - samba.password:                     the password for connecting to the samba share
+ #
  cd /etc/chef
  cp /srv/chef/config/attributes.json .
  nano attributes.json
