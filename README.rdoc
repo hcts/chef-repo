@@ -42,7 +42,7 @@ Log in as hcts, and:
 
  # Configure chef attributes. (Mostly just passwords.)
  cd /etc/chef
- cp /src/chef/config/attributes.json .
+ cp /srv/chef/config/attributes.json .
  nano attributes.json
 
  # Run chef.
