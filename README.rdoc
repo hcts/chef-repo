@@ -25,9 +25,11 @@ Through the installation process, enter these values:
  Full name for the new user: HCTS
  Username for your account: hcts
 
-Then, reboot the system. (The bootloader on the CD may have trouble with this,
-so you may need to momentarily remove the CD or place the hard disk before the
-CD-ROM drive in the boot sequence in order for the system to boot properly.)
+Then, reboot the system. The bootloader on the CD may have trouble with this,
+so you may need to either momentarily remove the CD or place the hard disk
+before the CD-ROM drive in the boot sequence in order for the system to boot
+properly. (If you do remove the CD, you will need to re-insert it before
+running `chef-solo` below.)
 
 Log in as hcts, and:
 
