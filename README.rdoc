@@ -9,11 +9,27 @@ useful or interesting.
 == Bootstrapping
 
 I've given you an installation CD you can use. If anything ever happens to it,
-you can re-create one from http://github.com/hcts/bootstrap.
+you can either burn another with the ISO image in hcts-data/Server or, if
+needed, fully re-create it from http://github.com/hcts/bootstrap.
 
-Boot the installation CD, follow through the process, and reboot the system.
+Boot the installation CD, typing "install" at the "boot:" prompt.
 
-Then, log in and:
+Through the installation process, enter these values:
+
+ IP address: 192.168.0.1
+ Netmask: 255.255.255.0
+ Router: 192.168.0.254
+ Name servers: 192.168.0.254
+ Hostname: moshi
+ Domain name: <leave blank>
+ Full name for the new user: HCTS
+ Username for your account: hcts
+
+Then, reboot the system. (The bootloader on the CD may have trouble with this,
+so you may need to momentarily remove the CD or place the hard disk before the
+CD-ROM drive in the boot sequence in order for the system to boot properly.)
+
+Log in as hcts, and:
 
  # Become root.
  sudo -i
