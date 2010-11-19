@@ -43,14 +43,14 @@ Log in as hcts, and:
  # Configure chef attributes. (Mostly just passwords.)
  cd /etc/chef
  cp /src/chef/config/attributes.json .
- vi attributes.json
+ nano attributes.json
 
  # Run chef.
  chef-solo
 
 Once you've done that, you can schedule chef-solo to run every hour:
 
- vi /etc/cron.d/chef
+ nano /etc/cron.d/chef
 
 Then, if you're restoring data from a backup (say on a USB stick):
 
