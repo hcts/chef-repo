@@ -21,7 +21,7 @@ Through the installation process, enter these values:
  Router: 192.168.0.254
  Name servers: 192.168.0.254
  Hostname: moshi
- Domain name: <leave blank>
+ Domain name: hcts.org
  Full name for the new user: HCTS
  Username for your account: hcts
 
