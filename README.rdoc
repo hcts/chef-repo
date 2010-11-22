@@ -20,7 +20,7 @@ Through the installation process, enter these values:
  Netmask: 255.255.255.0
  Router: 192.168.0.254
  Name servers: 192.168.0.254
- Hostname: moshi
+ Hostname: moshi (be sure to user a lowercase "m" so that backups can be restored!)
  Domain name: hcts.org
  Full name for the new user: HCTS
  Username for your account: hcts
@@ -62,11 +62,22 @@ Log in as hcts, and:
 
 Once you've done that, you can schedule chef-solo to run every hour:
 
+ # When editing this file, you'll just be removing the hash mark from the
+ # beginning of the last line, the one that starts "0 * * * * root".
+ #
  nano /etc/cron.d/chef
 
-Then, if you're restoring data from a backup (say on a USB stick):
+Then, if you're restoring data from a backup:
 
- rsnapshot-restore /media/UDISK/latest.tar.gz
+ # Plug in the USB stick or external hard drive. You will see some messages on
+ # the screen including text like [sdb]. Take note of the precise text -- for
+ # example, is it "sdb" or "sdc" -- and use those letters, followed by a 1, in
+ # the `mount` command below.
+ #
+ mkdir -p /media/backup
+ mount /dev/sdb1 /media/backup
+ rsnapshot-restore /media/backup/latest.tar.gz
+ umount /media/backup
 
 And that's it!
 
