@@ -81,15 +81,26 @@ Then, if you're restoring data from a backup:
 
 And that's it!
 
-You can add additional *administrative* users -- NOT customers -- with this
-command:
+== Add More Users
 
- sudo adduser henry
+You'll want to make separate user accounts for your staff to have Remote
+Desktop access to the system. (See more information about Remote Desktop
+below.)
 
-If henry should also have permission to use sudo, you would instead:
+To add these users, and to give them permission to use sudo, use these
+commands:
 
- sudo adduser henry
- sudo adduser henry admin
+ sudo -i
+ adduser henry
+ adduser henry admin
+ adduser noel
+ adduser noel admin
+ #
+ # ...and so on.
+ #
+ # Note that the "adduser ... admin" commands are only necessary if the user
+ # needs to use sudo from time to time. If you're not sure, it's safer not to
+ # run this command until you need to.
 
 == Logfiles
 
