@@ -38,9 +38,6 @@ Log in as hcts, and:
 
  # Download the chef recipes.
  git clone git://github.com/hcts/chef-repo.git /srv/chef
- cd /srv/chef
- git submodule init
- git submodule update
 
  # Configure chef attributes. (Mostly just passwords.)
  #
@@ -149,7 +146,6 @@ Instead, you'll just run the following commands:
  sudo -i
  cd /srv/chef
  git pull origin master
- git submodule update
  chef-solo
 
 == Samba
