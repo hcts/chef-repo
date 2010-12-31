@@ -44,10 +44,10 @@
 
   "modems":    [{ "device": "ttyS0",
                   "speed":  57600,
-                  "remote_ip_address": 192.168.0.10 },
+                  "remote_ip_address": "192.168.0.10" },
                 { "device": "ttyS1",
                   "speed":  57600,
-                  "remote_ip_address": 192.168.0.20 }],
+                  "remote_ip_address": "192.168.0.20" }],
 
   "samba":     { "password": "---" }
 }
