@@ -22,7 +22,7 @@ class Pathname
     if exist?
       yield expand_path
     else
-      abort "Directory #{self} does not exist."
+      abort "Path #{self} does not exist."
     end
   end
 
