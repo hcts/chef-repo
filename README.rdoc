@@ -76,6 +76,13 @@ Then, if you're restoring data from a backup:
  rsnapshot-restore /media/backup/latest.tar.gz
  umount /media/backup
 
+Since many of the chef-generated configuration files depend on the information
+you just restored (for example, the virtual_alpine script contains the first
+domain name in the user datase), you'll probably want to run `chef-solo` just
+after performing a restore:
+
+ chef-solo
+
 And that's it!
 
 == Add More Users
