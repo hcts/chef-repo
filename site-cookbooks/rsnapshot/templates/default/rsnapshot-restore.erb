@@ -11,7 +11,7 @@ class Pathname
 
       Dir.chdir(path) do
         puts "Extracting #{full_path}:"
-        system "/bin/tar zxf #{full_path}"
+        system "/bin/tar zxf #{full_path}" || abort("Error extracting #{full_path}.")
       end
 
       yield Pathname.new(path)
