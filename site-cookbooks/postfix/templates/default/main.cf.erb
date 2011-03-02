@@ -11,6 +11,9 @@ smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 # Outgoing mail
 relayhost = <%= @node[:postfix][:default_relayhost] %>
 sender_dependent_relayhost_maps = mysql:/etc/postfix/relay_hosts.cf
+smtp_data_done_timeout = <%= @node[:postfix][:smtp_data_done_timeout] %>
+smtp_data_init_timeout = <%= @node[:postfix][:smtp_data_init_timeout] %>
+smtp_data_xfer_timeout = <%= @node[:postfix][:smtp_data_xfer_timeout] %>
 smtp_sasl_auth_enable = yes
 smtp_sasl_password_maps = mysql:/etc/postfix/smtp_passwords.cf<%= ', hash:/etc/postfix/default_smtp_passwords' unless @node[:postfix][:default_relayhost].empty? %>
 smtp_sasl_security_options = noanonymous
