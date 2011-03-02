@@ -38,10 +38,7 @@
   "postfix":   { "default_relayhost":          "smtp2.elct.org",
                  "default_relayhost_username": "hcts@elct.org",
                  "default_relayhost_password": "---",
-                 "root_mail_to":               "---",
-                 "smtp_data_done_timeout":     "600s",
-                 "smtp_data_init_timeout":     "120s",
-                 "smtp_data_xfer_timeout":     "180s" },
+                 "root_mail_to":               "---" },
 
   "fetchmail": { "timeout": 1800 },
 
