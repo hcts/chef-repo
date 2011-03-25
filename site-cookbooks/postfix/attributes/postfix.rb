@@ -9,10 +9,10 @@ set_unless.postfix.root_mail_to               = ''
 # "Timeout, closing transmission channel (in reply to end of DATA command)". By
 # tweaking these parameters, we're hoping to avoid those issues.
 #
-# From http://serverfault.com/questions/55949, I'm starting with bumping
-# smtp_data_xfer_timeout to 600s.
+# From http://serverfault.com/questions/55949, I'm considering starting with
+# bumping smtp_data_xfer_timeout to 600s.
 set_unless.postfix.smtp_data_done_timeout = '600s' # postfix default: 600s
 set_unless.postfix.smtp_data_init_timeout = '120s' # postfix default: 120s
-set_unless.postfix.smtp_data_xfer_timeout = '600s' # postfix default: 180s
+set_unless.postfix.smtp_data_xfer_timeout = '180s' # postfix default: 180s
 
 set.postfix.virtual_mailbox_base = '/var/mail/virtual'
